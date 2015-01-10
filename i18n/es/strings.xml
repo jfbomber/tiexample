@@ -1,0 +1,5 @@
+<resources>
+    <!-- Opt + e, then a for the accent -->
+  <string name='hello_msg'>Hola, como está?</string> 
+  <string name='bye_msg'>adios!</string>  
+</resources>

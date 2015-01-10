@@ -1,0 +1,4 @@
+<resources>
+  <string name='hello_msg'>Hello, how are you?</string>
+  <string name='bye_msg'>Bye bye!</string>  
+</resources>
