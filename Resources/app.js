@@ -1,6 +1,6 @@
 
 // this sets the background color of the master UIView (when there are no windows/tab groups on it)
-Titanium.UI.setBackgroundColor('#000');
+Titanium.UI.setBackgroundColor('#ffffff');
 
 
 
@@ -87,9 +87,20 @@ var createUI = function(name, window) {
 };
 
 // add elements
-createUI('label','ui/Label');
+createUI('Alerts','ui/Alerts');
+createUI('Button','ui/Button');
+createUI('ImageView','ui/ImageView');
+createUI('Label','ui/Label');
+createUI('ListView','ui/ListView');
+createUI('PickerView','ui/PickerView');
+createUI('ProgressBar','ui/ProgressBar');
+createUI('ScrollableView','ui/ScrollableView');
+createUI('ScrollView','ui/ScrollView');
+createUI('Switch','ui/Switch');
+createUI('WebView','ui/WebView');
+
+
  
-/*
 var tableView = Ti.UI.createTableView({});
 var rows = [];
 for (var i = 0; i < uiElements.length; i++) {
@@ -110,12 +121,13 @@ for (var i = 0; i < uiElements.length; i++) {
 
 tableView.setData(rows);
 window.add(tableView);
-*/
+
 
 function openWindow(e) {
     var NewWindow = require(e.window);
     var newWindow = new NewWindow(e.arg);
     
+    newWindow.setTitle(e.window.replace("ui/",""));
     self.openWindow(newWindow, { animated:true });      
     history.push(newWindow);
 }

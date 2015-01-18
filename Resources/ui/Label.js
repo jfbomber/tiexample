@@ -32,11 +32,7 @@ function Label() {
         font : { fontWeight:'bold',fontSize:10,fontStyle:'italic' }
     }); self.add(rightLabel);
     
-    var localizedLabel = Ti.UI.createLabel({
-        top : 25,
-        textid : 'hello_msg'
-    }); self.add(localizedLabel);
-    
+
     
     return self;
 }
