@@ -1,6 +1,10 @@
 function ImageView() {
     var self = Ti.UI.createWindow({});
-    // add code here
+   
+    var imageView = Ti.UI.createImageView({
+        image : '/images/yosemite-map.png'
+    });   self.add(imageView);
+   
     return self;
 }
 

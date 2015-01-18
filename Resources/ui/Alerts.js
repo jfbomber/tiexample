@@ -2,8 +2,7 @@ function Alerts() {
     var self = Ti.UI.createWindow({
         title : 'Alerts'
     });
-    // add code here
-    
+    alert('say hello');
     var alertButton = Ti.UI.createButton({
         title : 'Click Me for Alert',
         borderColor : 'Red',

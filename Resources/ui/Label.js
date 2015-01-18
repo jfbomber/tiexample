@@ -3,8 +3,7 @@ function Label() {
         title : 'Labels',
         backgroundColor : 'White'
     });    
-    
-    
+
     var leftLabel = Ti.UI.createLabel({
         text : 'left label',
         left : 10,
