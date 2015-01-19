@@ -1,12 +1,7 @@
 function ScrollView() {
-    var self = Ti.UI.createWindow({
-        title : 'Scroll View'
-    });
-    // add code here
+    var self = Ti.UI.createWindow({});
     
-    var scrollView = Ti.UI.createScrollView({
-         
-    });
+    var scrollView = Ti.UI.createScrollView({});
     
     var map = Ti.UI.createImageView({
         image : 'images/yosemite-map.png'

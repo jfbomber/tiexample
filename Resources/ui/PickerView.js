@@ -2,14 +2,8 @@ function PickerView() {
     var self = Ti.UI.createWindow({});
     
     // create the picker
-    var picker = Ti.UI.createPicker({
-        backgroundGradient : {
-            type  : 'linear',
-            colors : [{color : '#857c57', offset : 0.0 }, {color : '#e3d5a3', offset : 0.44 }, {color : '#e8e4d3', offset : 1.0 }],
-            startPoint : {x:'0%',y:'0%'},
-            endPoint : {x:'0%',y:'100%'}
-        }
-    }); self.add(picker);
+    var picker = Ti.UI.createPicker({ }); 
+    self.add(picker);
     
     // create fruit column
     var fruitColumn = Ti.UI.createPickerColumn();

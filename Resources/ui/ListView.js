@@ -1,13 +1,34 @@
 function ListView() {
     var self = Ti.UI.createWindow({});
     
+    var letters = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z";
+    letters = letters.split(",");
     
     // list views are designed to preform better than table views
     // but do not allow you to add subviews to a list item
     var listView = Ti.UI.createListView();
     // sections are required for lists views vs table views
     var sections = [];
+    var i;
+    for (var a = 0; a < letters.length; a++) {
+        var section = Ti.UI.createListSection({
+            headerTitle : letters[a] 
+        });
+        i = 0;
+        var dataSet = [];
+        while (i < 10) {
+            dataSet.push({ properties : { title : i.toString() } });
+            i++;
+        }
+        section.setItems(dataSet);
+        sections.push(section);
+    }
     
+    listView.setSections(sections);
+    self.add(listView);
+    
+    
+    /*
     var breakfastSection = Ti.UI.createListSection({ 
         headerTitle: 'breakfasts'
     });
@@ -44,6 +65,7 @@ function ListView() {
     ];
     dinnerSection.setItems(dinnerDataSet);
     listView.appendSection(dinnerSection);
+    */
     return self;
 }
 

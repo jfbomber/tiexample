@@ -1,6 +1,5 @@
 function Switch() {
     var self = Ti.UI.createWindow({});
-    // add code here
     
     var view = Ti.UI.createView({
         left : '35%',
