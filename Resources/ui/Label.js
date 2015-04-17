@@ -32,6 +32,12 @@ function Label() {
     }); self.add(rightLabel);
     
 
+    var helloMessage = L('hello_msg', "No Translation Found");
+    // Ti.Locale.getString('hello_msg');
+    var localizedLabel = Ti.UI.createLabel({
+        top : 25,
+        text : helloMessage
+    }); self.add(localizedLabel);
     
     return self;
 }

@@ -4,7 +4,7 @@ function ScrollView() {
     var scrollView = Ti.UI.createScrollView({});
     
     var map = Ti.UI.createImageView({
-        image : 'images/yosemite-map.png'
+        image : '/images/yosemite-map.png'
     }); scrollView.add(map);
     
     self.add(scrollView);

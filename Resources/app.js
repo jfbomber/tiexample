@@ -2,14 +2,8 @@
 // this sets the background color of the master UIView (when there are no windows/tab groups on it)
 Titanium.UI.setBackgroundColor('#ffffff');
 
-
-
-
-
-
-
-if (Ti.Network.online) {
-
+if (!Ti.Network.online) {
+    alert('You are not connected to the internet but it really isn\'t needed');
 }
 
 // var Window = require('ui/Label');
@@ -25,6 +19,7 @@ var window = Ti.UI.createWindow({
 
 // global variables
 var self, history = [], uiElements =[];
+
 // iphone
 if (Ti.Platform.osname === 'iphone') {
     self = Ti.UI.iOS.createNavigationWindow({
@@ -87,11 +82,17 @@ var createUI = function(name, window) {
 };
 
 // add elements
+createUI('Two Views','ui/TwoView');
 createUI('Alerts','ui/Alerts');
 createUI('Button','ui/Button');
 createUI('ImageView','ui/ImageView');
 createUI('Label','ui/Label');
 createUI('ListView','ui/ListView');
+
+if (Ti.Platform.osname === 'android') {
+    createUI('Notification','ui/Notification');
+}
+
 createUI('PickerView','ui/PickerView');
 createUI('ProgressBar','ui/ProgressBar');
 createUI('ScrollableView','ui/ScrollableView');
@@ -101,7 +102,11 @@ createUI('WebView','ui/WebView');
 
 
  
-var tableView = Ti.UI.createTableView({});
+var tableView = Ti.UI.createTableView({
+    height : '80%',
+    bottom : 0    
+});
+
 var rows = [];
 for (var i = 0; i < uiElements.length; i++) {
     var uiElement = uiElements[i];
@@ -123,11 +128,15 @@ tableView.setData(rows);
 window.add(tableView);
 
 
+
+
 function openWindow(e) {
     var NewWindow = require(e.window);
     var newWindow = new NewWindow(e.arg);
+    if (newWindow.title) {
+        newWindow.setTitle(e.window.replace("ui/",""));    
+    }
     
-    newWindow.setTitle(e.window.replace("ui/",""));
     self.openWindow(newWindow, { animated:true });      
     history.push(newWindow);
 }
@@ -136,6 +145,26 @@ function closeWindow(e) {
      var currentWindow = history.pop();
      currentWindow.close();
 }
+
+var ConfirmView = require('ui/Controls/ConfirmView');
+var confirmView = new ConfirmView(function(e) {
+        // complete event    
+        var value = e.value;
+        console.log(value);
+        // self.remove(confirmView);
+    },
+    function(e) {
+        // cancel event  
+        console.log("cancel event");
+    },
+    function(e) {
+        // resend event 
+        console.log("resend event");
+    }
+);  
+
+self.add(confirmView);
+
 
 
 
