@@ -1,9 +1,8 @@
 /**
-var ConfirmView = require('ui/Controls/ConfirmView');
-var confirmView = new ConfirmView(function(e) {
+var PinView = require('ui/Controls/PinView');
+var pinView = new PinView(function(e) {
         // complete event    
         var value = e.value;
-        // self.remove(confirmView);
     },
     function(e) {
         // cancel event  
@@ -16,7 +15,9 @@ var confirmView = new ConfirmView(function(e) {
 
 // CAN BE SET FROM <= 6 
 var FIELD_COUNT = 5;
-function ConfirmView(completeEvent, cancelEvent, resendEvent) {
+function PinView(completeEvent, cancelEvent, resendEvent) {
+    
+    // shouldn't need to be adjusted
     var VIEW_WIDTH = Ti.Platform.displayCaps.getPlatformWidth();
     var BOTTOM_WIDTH_PCT = 75;
     var BOTTOM_WIDTH = ((VIEW_WIDTH - 7) * (BOTTOM_WIDTH_PCT / 100));
@@ -25,13 +26,9 @@ function ConfirmView(completeEvent, cancelEvent, resendEvent) {
     // this is for the keyboardsize
     var COL_MAX = 3;
     
-    
-    
-    
     var left = 10;
     var textFields = [];
     var colIndex = 0, rowIndex = 0;
-    
     
     var self = Ti.UI.createView({
         backgroundColor : '#4f90d9', 
@@ -40,7 +37,7 @@ function ConfirmView(completeEvent, cancelEvent, resendEvent) {
 
     
      var headerBar = Ti.UI.createView({
-        top : 20,
+        top : 0,
         height : '50dp',
         backgroundColor : 'White'
     }); self.add(headerBar);
@@ -188,13 +185,10 @@ function ConfirmView(completeEvent, cancelEvent, resendEvent) {
     
     var y = rowIndex * BUTTON_HEIGHT + (rowIndex * 1);
     
-    
     bottomContainer.setHeight(y.toString()+'dp');
-    
-    
     self.add(bottomContainer);
     self.add(textFieldContainer);
     return self;
 }
 
-module.exports = ConfirmView;
+module.exports = PinView;

@@ -94,6 +94,7 @@ if (Ti.Platform.osname === 'android') {
 }
 
 createUI('PickerView','ui/PickerView');
+createUI('PinWindow','ui/PinWindow');
 createUI('ProgressBar','ui/ProgressBar');
 createUI('ScrollableView','ui/ScrollableView');
 createUI('ScrollView','ui/ScrollView');
@@ -103,7 +104,7 @@ createUI('WebView','ui/WebView');
 
  
 var tableView = Ti.UI.createTableView({
-    height : '80%',
+    // height : '80%',
     bottom : 0    
 });
 
@@ -124,11 +125,9 @@ for (var i = 0; i < uiElements.length; i++) {
     rows.push(row);
 }
 
+
 tableView.setData(rows);
 window.add(tableView);
-
-
-
 
 function openWindow(e) {
     var NewWindow = require(e.window);
@@ -146,24 +145,6 @@ function closeWindow(e) {
      currentWindow.close();
 }
 
-var ConfirmView = require('ui/Controls/ConfirmView');
-var confirmView = new ConfirmView(function(e) {
-        // complete event    
-        var value = e.value;
-        console.log(value);
-        // self.remove(confirmView);
-    },
-    function(e) {
-        // cancel event  
-        console.log("cancel event");
-    },
-    function(e) {
-        // resend event 
-        console.log("resend event");
-    }
-);  
-
-self.add(confirmView);
 
 
 
