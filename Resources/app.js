@@ -10,12 +10,32 @@ if (!Ti.Network.online) {
 // var window = new Window();
 
 
-var window = Ti.UI.createWindow({
-    title : 'Test',
-    backgroundColor : 'Yellow'
+var window = Ti.UI.createWindow({ 
+    title : 'Example App',
+    backgroundColor : 'White'
 });
 
 
+/*
+Ti.App.addEventListener('resumed', function(e) {
+    Ti.App.launchURL = '';
+    
+    alert(Ti.Platform.ostype);
+    return "Test";
+    
+    if (Titanium.Platform.ostype == 'ios') {
+        cmd = Ti.App.getArguments();
+    
+        if ((typeof(cmd) === 'object') && cmd.hasOwnProperty('url')) {
+            var url = cmd.url; // exampe  
+        }    
+    } else if (Titanium.Platform.ostype == 'android') {
+        var url = Titanium.Android.currentActivity.intent.data;
+        alert(url);
+    }
+    
+});
+*/
 
 // global variables
 var self, history = [], uiElements =[];
@@ -82,6 +102,7 @@ var createUI = function(name, window) {
 };
 
 // add elements
+createUI('Form View','ui/FormView');
 createUI('Two Views','ui/TwoView');
 createUI('Alerts','ui/Alerts');
 createUI('Button','ui/Button');
@@ -89,7 +110,9 @@ createUI('ImageView','ui/ImageView');
 createUI('Label','ui/Label');
 createUI('ListView','ui/ListView');
 
+var isAndroid = false;
 if (Ti.Platform.osname === 'android') {
+    isAndroid = true;
     createUI('Notification','ui/Notification');
 }
 
@@ -101,10 +124,9 @@ createUI('ScrollView','ui/ScrollView');
 createUI('Switch','ui/Switch');
 createUI('WebView','ui/WebView');
 
-
- 
 var tableView = Ti.UI.createTableView({
-    // height : '80%',
+    top : 0,
+    allowsSelection : true,
     bottom : 0    
 });
 
@@ -113,6 +135,9 @@ for (var i = 0; i < uiElements.length; i++) {
     var uiElement = uiElements[i];
     var row = Ti.UI.createTableViewRow({
          title : uiElement.name,
+         tintColor : 'Black',
+         color : 'Black',
+         selected : 0, 
          _window : uiElement.window
     });  
     
@@ -125,9 +150,19 @@ for (var i = 0; i < uiElements.length; i++) {
     rows.push(row);
 }
 
+if (Ti.Platform.osname !== 'android') {
+    tableView.setAllowsSelection(true);
+    tableView.setAllowsSelectionDuringEditing(true);
+    setTimeout(function() {
+        tableView.setEditing(true);
+    }, 1000);
+}
 
 tableView.setData(rows);
+
+
 window.add(tableView);
+
 
 function openWindow(e) {
     var NewWindow = require(e.window);
@@ -136,7 +171,13 @@ function openWindow(e) {
         newWindow.setTitle(e.window.replace("ui/",""));    
     }
     
-    self.openWindow(newWindow, { animated:true });      
+    
+    // we don't use a navigation group with android
+    if (isAndroid) {
+        newWindow.open();  
+    } else {
+        self.openWindow(newWindow, { animated : true });
+    }
     history.push(newWindow);
 }
 
@@ -156,5 +197,10 @@ Ti.App.addEventListener('closeWindow', closeWindow);
 
 
 self.open();
+
+
+
+
+
  
 

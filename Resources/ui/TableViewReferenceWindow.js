@@ -6,7 +6,9 @@
  * @param {Function} clickEvent
  */
 function TableViewReferenceWindow(clickEvent) {
-    var self = Ti.UI.createWindow({});
+    var self = Ti.UI.createWindow({
+        backgroundColor : 'white',
+    });
     
     var button = Ti.UI.createButton({
         title : 'Increment' 
