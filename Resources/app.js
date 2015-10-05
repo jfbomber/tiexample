@@ -126,7 +126,7 @@ createUI('WebView','ui/WebView');
 
 var tableView = Ti.UI.createTableView({
     top : 0,
-    allowsSelection : true,
+    // allowsSelection : true,
     bottom : 0    
 });
 
@@ -140,26 +140,21 @@ for (var i = 0; i < uiElements.length; i++) {
          selected : 0, 
          _window : uiElement.window
     });  
-    
-    row.addEventListener('click', function(e) {
-        e.cancelBubble = true;
-        openWindow({
-           window : this._window 
-        });
-    });
     rows.push(row);
-}
-
-if (Ti.Platform.osname !== 'android') {
-    tableView.setAllowsSelection(true);
-    tableView.setAllowsSelectionDuringEditing(true);
-    setTimeout(function() {
-        tableView.setEditing(true);
-    }, 1000);
 }
 
 tableView.setData(rows);
 
+tableView.addEventListener('click', function(e) {
+    var sourceType = e.source.toString();
+    if (sourceType === '[object TiUITableViewRow]') {
+        openWindow({
+            window : e.source._window 
+        });
+    } else {
+        
+    }
+});
 
 window.add(tableView);
 

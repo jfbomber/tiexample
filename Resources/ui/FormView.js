@@ -1,5 +1,3 @@
-var PickerLabel = require('ui/Controls/PickerLabel');
-var TableRow = require('ui/Controls/TableRow');
 
 function FormView() {
     

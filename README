@@ -1,18 +1,11 @@
-Welcome to your Appcelerator Titanium Mobile Project
+ti clean
+ti build -p android
+adb uninstall com.fostwaremedia.example
+adb install /Users/jfoster/Apps/Mobile/titanium/example/build/android/bin/example.apk
 
-This is a blank project.  Start by editing your application's app.js to 
-make your first mobile project using Titanium.
+
+intent://package=com.fostwaremedia.example;scheme=exampleapp;end;
 
 
 
-----------------------------------
-Stuff our legal folk make us say:
-
-Appcelerator, Appcelerator Titanium and associated marks and logos are 
-trademarks of Appcelerator, Inc. 
-
-Titanium is Copyright (c) 2008-2013 by Appcelerator, Inc. All Rights Reserved.
-
-Titanium is licensed under the Apache Public License (Version 2). Please
-see the LICENSE file for the full license.
-
+ti build -p ios -F iphone --tishadow --retina --devicetypeid com.apple.CoreSimulator.SimDeviceType.iPhone-6 

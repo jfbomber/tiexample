@@ -1,8 +1,8 @@
-#appname: example
-#publisher: jfoster
-#url: http://www.fostwaremedia.com
-#image: appicon.png
-#appid: com.fostwaremedia.example
-#desc: undefined
-#type: ipad
-#guid: cbb98e9f-3d4d-41e1-ba23-da3b56b95d2b
+#appname:example
+#publisher:jfoster
+#url:http://www.fostwaremedia.com
+#image:appicon.png
+#appid:com.fostwaremedia.example
+#desc:Example App
+#type:ipad
+#guid:cbb98e9f-3d4d-41e1-ba23-da3b56b95d2b

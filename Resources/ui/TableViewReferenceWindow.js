@@ -7,7 +7,6 @@
  */
 function TableViewReferenceWindow(clickEvent) {
     var self = Ti.UI.createWindow({
-        backgroundColor : 'white',
     });
     
     var button = Ti.UI.createButton({
