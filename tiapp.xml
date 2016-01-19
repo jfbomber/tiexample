@@ -96,7 +96,7 @@
         <target device="iphone">true</target>
         <target device="mobileweb">false</target>
     </deployment-targets>
-    <sdk-version>5.0.2.GA</sdk-version>
+    <sdk-version>5.1.2.GA</sdk-version>
     <property name="appc-app-id" type="string">5570890fa43e4a30147ddca7</property>
     <property name="acs-authbase-url-development" type="string">https://secure-identity.cloud.appcelerator.com</property>
     <property name="acs-base-url-development" type="string">https://api.cloud.appcelerator.com</property>
